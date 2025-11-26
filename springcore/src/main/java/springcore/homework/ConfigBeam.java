@@ -16,4 +16,9 @@ public class ConfigBeam {
 				,new Subject("Book2"),
 				new Subject("Book3"));
 	}
+	@Bean
+	public String[] color() {
+		String[] colors = {"Black","Green","White" };
+		return colors;
+	}
 }
