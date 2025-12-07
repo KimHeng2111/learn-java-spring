@@ -1,9 +1,11 @@
 package com.kimheng.phoneshop.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.kimheng.phoneshop.entity.Brand;
+import com.kimheng.phoneshop.exception.ApiException;
 import com.kimheng.phoneshop.repository.BrandRepository;
 import com.kimheng.phoneshop.service.BrandService;
 
@@ -16,5 +18,16 @@ public class BrandServiceImpl implements BrandService{
 	public Brand Create(Brand brand) {
 		return brandRepository.save(brand);
 	}
+	@Override
+	public Brand getById(Integer id) {
+		return brandRepository.findById(id).orElseThrow(() -> new ApiException(HttpStatus.NOT_FOUND,String.format("Brand id %d is not found",id)));
+	}
+	@Override
+	public Brand update(Integer id, Brand brandUpdate) {
+		Brand brand = getById(id);
+		brand.setName(brandUpdate.getName());
+		return brandRepository.save(brand);
+	}
 
 }
+ 
