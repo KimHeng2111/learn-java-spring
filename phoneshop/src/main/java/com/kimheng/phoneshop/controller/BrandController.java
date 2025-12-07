@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kimheng.phoneshop.dto.BrandDTO;
 import com.kimheng.phoneshop.entity.Brand;
+import com.kimheng.phoneshop.mapper.BrandMapper;
 import com.kimheng.phoneshop.service.BrandService;
-import com.kimheng.phoneshop.util.Mapper;
+
 
 @RestController
 @RequestMapping("brands")
@@ -23,7 +25,7 @@ public class BrandController {
 	private BrandService brandService;
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<?> create(@RequestBody BrandDTO brandDTO){
-		Brand brand = Mapper.toBrand(brandDTO);
+		Brand brand = BrandMapper.INSTANCE.toBrand(brandDTO);
 		brand = brandService.Create(brand);
 		return ResponseEntity.ok(brand);
 	}
@@ -31,12 +33,25 @@ public class BrandController {
 	@GetMapping("{id}")
 	public ResponseEntity<?> getBrandById(@PathVariable("id") Integer brandId){
 		Brand brand = brandService.getById(brandId);
-		return ResponseEntity.ok(Mapper.toDTO(brand));
+		return ResponseEntity.ok(BrandMapper.INSTANCE.toBrandDTO(brand));
 	}
+	@GetMapping()
+	public ResponseEntity<?> getBrands(){
+		return ResponseEntity.ok(brandService.getBrands().stream().map((b) -> BrandMapper.INSTANCE.toBrandDTO(b)));
+		//return ResponseEntity.ok(BrandMapper.INSTANCE.toBrandDTO(brand));
+	}
+	
+	@GetMapping("filter")
+	public ResponseEntity<?> getBrands(@RequestParam("name") String name){
+		
+		return ResponseEntity.ok(brandService.getBrands(name));
+	}
+	
 	@PutMapping("{id}")
 	public ResponseEntity<?> update(@PathVariable("id") Integer brandId , @RequestBody Brand brandDTO){
 		
 		Brand brand = brandService.update(brandId,brandDTO);
 		return ResponseEntity.ok(brand);
 	}
+	
 }

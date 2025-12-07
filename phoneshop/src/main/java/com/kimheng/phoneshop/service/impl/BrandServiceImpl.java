@@ -1,5 +1,7 @@
 package com.kimheng.phoneshop.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -27,6 +29,16 @@ public class BrandServiceImpl implements BrandService{
 		Brand brand = getById(id);
 		brand.setName(brandUpdate.getName());
 		return brandRepository.save(brand);
+	}
+	@Override
+	public List<Brand> getBrands() {
+		List<Brand> brands = brandRepository.findAll();
+		return brands;
+	}
+	@Override
+	public List<Brand> getBrands(String name) {
+		List<Brand> brands = brandRepository.findByNameLikeIgnoreCase(String.format("%%%s%%", name));
+		return brands;
 	}
 
 }
