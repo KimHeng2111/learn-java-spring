@@ -1,5 +1,7 @@
 package com.kimheng.phoneshop.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,16 +37,17 @@ public class BrandController {
 		Brand brand = brandService.getById(brandId);
 		return ResponseEntity.ok(BrandMapper.INSTANCE.toBrandDTO(brand));
 	}
-	@GetMapping()
-	public ResponseEntity<?> getBrands(){
-		return ResponseEntity.ok(brandService.getBrands().stream().map((b) -> BrandMapper.INSTANCE.toBrandDTO(b)));
-		//return ResponseEntity.ok(BrandMapper.INSTANCE.toBrandDTO(brand));
-	}
+	/*
+	 * @GetMapping() public ResponseEntity<?> getBrands(){ return
+	 * ResponseEntity.ok(brandService.getBrands().stream().map((b) ->
+	 * BrandMapper.INSTANCE.toBrandDTO(b))); //return
+	 * ResponseEntity.ok(BrandMapper.INSTANCE.toBrandDTO(brand)); }
+	 */
 	
-	@GetMapping("filter")
-	public ResponseEntity<?> getBrands(@RequestParam("name") String name){
+	@GetMapping()
+	public ResponseEntity<?> getBrands(@RequestParam Map<String,String> param){
 		
-		return ResponseEntity.ok(brandService.getBrands(name));
+		return ResponseEntity.ok(brandService.getBrands(param));
 	}
 	
 	@PutMapping("{id}")
