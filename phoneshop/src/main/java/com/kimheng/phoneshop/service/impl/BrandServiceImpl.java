@@ -17,18 +17,23 @@ import com.kimheng.phoneshop.service.BrandService;
 import com.kimheng.phoneshop.specification.BrandSpecification;
 import com.kimheng.phoneshop.util.PageUtil;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class BrandServiceImpl implements BrandService{
 
 	@Autowired
-	private BrandRepository brandRepository;
+	private final BrandRepository brandRepository;
 	@Override
 	public Brand Create(Brand brand) {
 		return brandRepository.save(brand);
 	}
 	@Override
 	public Brand getById(Integer id) {
-		return brandRepository.findById(id).orElseThrow(() -> new ApiException(HttpStatus.NOT_FOUND,String.format("Brand id %d is not found",id)));
+		return brandRepository.findById(id).
+				orElseThrow(() ->
+				new ApiException(HttpStatus.NOT_FOUND,String.format("Brand id %d is not found",id)));
 	}
 	@Override
 	public Brand update(Integer id, Brand brandUpdate) {
