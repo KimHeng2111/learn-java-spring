@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kimheng.phoneshop.dto.ModelDTO;
-import com.kimheng.phoneshop.mapper.ModelMapper;
+import com.kimheng.phoneshop.mapper.ModelEntityMapper;
 import com.kimheng.phoneshop.service.ModelService;
 
 import lombok.RequiredArgsConstructor;
@@ -17,7 +17,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ModelController {
 	private final ModelService modelService;
-	private final ModelMapper modelMapper;
+	private final ModelEntityMapper modelMapper;
 	
 	@PostMapping
 	public ResponseEntity<?> createBrand(@RequestBody ModelDTO modelDTO){

@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-data
+      author: LengKimheng
+      changes:
+        - loadData:
+            file: db/data/brand_data.csv
+            tableName: tbl_brand
+            separator: ","
+            encoding: UTF-8
+        - loadData:
+            file: db/data/model_data.csv
+            tableName: tbl_model
+            separator: ","
+            encoding: UTF-8

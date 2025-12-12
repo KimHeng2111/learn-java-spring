@@ -1,0 +1,51 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: LengKimHeng
+      changes:
+        - createTable:
+            tableName: tbl_brand
+            columns:
+              - column:
+                  name: brand_id
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: brand_name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 2
+      author: LengKimHeng
+      changes:
+        - createTable:
+            tableName: tbl_model
+            columns:
+              - column:
+                  name: model_id
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: model_name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: brand_id
+                  type: INT
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: tbl_model
+            baseColumnNames: brand_id
+            constraintName: fk_model_brand
+            referencedTableName: tbl_brand
+            referencedColumnNames: brand_id

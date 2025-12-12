@@ -1,5 +1,7 @@
 package com.kimheng.phoneshop.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,11 @@ public class ModelServiceImpl implements ModelService{
 	@Override
 	public Model create(Model model) {
 		return modelRepository.save(model);
+	}
+	@Override
+	public List<Model> getByBrandId(Integer brandId) {
+		
+		return modelRepository.findByBrandId(brandId);
 	}
 
 }

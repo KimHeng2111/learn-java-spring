@@ -11,3 +11,7 @@ spring:
     hibernate:
       ddl-auto: update # Options: update, create, create-drop, validate, none
     show-sql: true
+  mvc:
+    pathmatch-strategy: ant_path_matcher
+  liquibase:
+    change-log: classpath:db/changeLog/db.changelog-master.yaml
