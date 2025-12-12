@@ -17,16 +17,22 @@ import org.springframework.web.bind.annotation.RestController;
 import com.kimheng.phoneshop.dto.BrandDTO;
 import com.kimheng.phoneshop.entity.Brand;
 import com.kimheng.phoneshop.mapper.BrandMapper;
+import com.kimheng.phoneshop.mapper.ModelEntityMapper;
 import com.kimheng.phoneshop.service.BrandService;
+import com.kimheng.phoneshop.service.ModelService;
+
+import lombok.RequiredArgsConstructor;
 
 
 @RestController
 @RequestMapping("brands")
 @CrossOrigin(origins = "http://localhost:4200")
+@RequiredArgsConstructor
 public class BrandController {
 	
-	@Autowired
-	private BrandService brandService;
+	
+	private final BrandService brandService;
+	private final ModelService modelService;
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<?> create(@RequestBody BrandDTO brandDTO){
 		Brand brand = BrandMapper.INSTANCE.toBrand(brandDTO);
@@ -51,7 +57,10 @@ public class BrandController {
 		
 		return ResponseEntity.ok(brandService.getBrands(param));
 	}
-	
+	@GetMapping("{id}/models")
+	public ResponseEntity<?> getModels(@PathVariable("id") Integer brandId){
+		return ResponseEntity.ok(modelService.getByBrandId(brandId).stream().map(m -> ModelEntityMapper.INSTANCE.toDTO(m)));
+	}
 	@PutMapping("{id}")
 	public ResponseEntity<?> update(@PathVariable("id") Integer brandId , @RequestBody Brand brandDTO){
 		
