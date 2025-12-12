@@ -30,13 +30,13 @@ public class BrandServiceImpl implements BrandService{
 		return brandRepository.save(brand);
 	}
 	@Override
-	public Brand getById(Integer id) {
+	public Brand getById(Long id) {
 		return brandRepository.findById(id).
 				orElseThrow(() ->
 				new ApiException(HttpStatus.NOT_FOUND,String.format("Brand id %d is not found",id)));
 	}
 	@Override
-	public Brand update(Integer id, Brand brandUpdate) {
+	public Brand update(Long id, Brand brandUpdate) {
 		Brand brand = getById(id);
 		brand.setName(brandUpdate.getName());
 		return brandRepository.save(brand);

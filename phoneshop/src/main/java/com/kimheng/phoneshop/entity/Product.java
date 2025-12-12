@@ -1,5 +1,7 @@
 package com.kimheng.phoneshop.entity;
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,15 +14,23 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "tbl_model")
-public class Model {
+@Table(name = "tbl_product")
+public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="model_id")
-	private Long id;
-	@Column(name="model_name")
+	@Column(name = "product_id")
+	private long id;
+	@Column(name = "product_name")
 	private String name;
+	@Column(name = "image_path")
+	private String imagePath;
+	private Integer avilableUnit;
 	@ManyToOne
-	@JoinColumn(name = "brand_id")
-	private Brand brand;
+	@JoinColumn(name = "model_id")
+	private Model model;
+	@ManyToOne
+	@JoinColumn(name = "color_id")
+	private Color color;
+	@Column(name = "sale_price")
+	private BigDecimal salePrice;
 }

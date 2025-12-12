@@ -1,14 +1,14 @@
 databaseChangeLog:
   - changeSet:
       id: 1
-      author: heng
+      author: LengKimHeng
       changes:
         - createTable:
             tableName: tbl_brand
             columns:
               - column:
                   name: brand_id
-                  type: INT
+                  type: BIGINT
                   autoIncrement: true
                   constraints:
                     primaryKey: true
@@ -21,14 +21,14 @@ databaseChangeLog:
 
   - changeSet:
       id: 2
-      author: heng
+      author: LengKimHeng
       changes:
         - createTable:
             tableName: tbl_model
             columns:
               - column:
                   name: model_id
-                  type: INT
+                  type: BIGINT
                   autoIncrement: true
                   constraints:
                     primaryKey: true
@@ -40,7 +40,7 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: brand_id
-                  type: INT
+                  type: BIGINT
                   constraints:
                     nullable: false
         - addForeignKeyConstraint:

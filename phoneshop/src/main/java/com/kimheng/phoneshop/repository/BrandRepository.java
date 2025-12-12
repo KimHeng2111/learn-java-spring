@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 import com.kimheng.phoneshop.entity.Brand;
 
 @Repository
-public interface BrandRepository  extends JpaRepository<Brand, Integer>, JpaSpecificationExecutor<Brand>{
+public interface BrandRepository  extends JpaRepository<Brand, Long>, JpaSpecificationExecutor<Brand>{
 	List<Brand> findByNameLikeIgnoreCase(String name);
 }

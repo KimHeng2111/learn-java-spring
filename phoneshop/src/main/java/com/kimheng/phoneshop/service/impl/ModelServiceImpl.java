@@ -19,7 +19,7 @@ public class ModelServiceImpl implements ModelService{
 		return modelRepository.save(model);
 	}
 	@Override
-	public List<Model> getByBrandId(Integer brandId) {
+	public List<Model> getByBrandId(Long brandId) {
 		
 		return modelRepository.findByBrandId(brandId);
 	}
