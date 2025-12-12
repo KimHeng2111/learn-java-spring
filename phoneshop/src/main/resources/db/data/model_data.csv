@@ -1,0 +1,30 @@
+model_name,brand_id
+iPhone 16 Pro,1
+iPhone 16 Pro Max,1
+iPhone 16 Ultra,1
+Galaxy S25,2
+Galaxy S25+,2
+Galaxy S25 Ultra,2
+Galaxy Z Fold7,2
+Galaxy Z Flip7,2
+Xiaomi 15,3
+Xiaomi 15 Pro,3
+Xiaomi 15 Ultra,3
+Oppo Find X8,4
+Oppo Find X8 Pro,4
+Oppo Reno 12 Pro,4
+Vivo X100,5
+Vivo X100 Pro,5
+Vivo X100 Pro+,5
+Huawei Mate 70,6
+Huawei Mate 70 Pro,6
+Huawei P70 Pro+,6
+Realme GT Neo 7,7
+Realme GT 7 Pro,7
+Motorola Edge 50,8
+Motorola Edge 50 Pro,8
+OnePlus 13,9
+OnePlus 13 Pro,9
+Google Pixel 10,10
+Google Pixel 10 Pro,10
+Google Pixel Fold 2,10
