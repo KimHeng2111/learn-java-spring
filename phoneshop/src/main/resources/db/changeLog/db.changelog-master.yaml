@@ -3,3 +3,5 @@ databaseChangeLog:
     - file: db/changeLog/001_init_db_schema.yml
   - include:
     - file: db/changeLog/002_insert_data.yml
+  - include:
+    - file: db/changeLog/003_add_more_db_schema.yaml

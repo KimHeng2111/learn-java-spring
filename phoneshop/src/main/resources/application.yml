@@ -15,3 +15,4 @@ spring:
     pathmatch-strategy: ant_path_matcher
   liquibase:
     change-log: classpath:db/changeLog/db.changelog-master.yaml
+    enabled: false

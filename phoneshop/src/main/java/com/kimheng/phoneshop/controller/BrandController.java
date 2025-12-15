@@ -2,7 +2,6 @@ package com.kimheng.phoneshop.controller;
 
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,7 +40,7 @@ public class BrandController {
 	}
 	
 	@GetMapping("{id}")
-	public ResponseEntity<?> getBrandById(@PathVariable("id") Integer brandId){
+	public ResponseEntity<?> getBrandById(@PathVariable("id") Long brandId){
 		Brand brand = brandService.getById(brandId);
 		return ResponseEntity.ok(BrandMapper.INSTANCE.toBrandDTO(brand));
 	}
@@ -58,11 +57,11 @@ public class BrandController {
 		return ResponseEntity.ok(brandService.getBrands(param));
 	}
 	@GetMapping("{id}/models")
-	public ResponseEntity<?> getModels(@PathVariable("id") Integer brandId){
+	public ResponseEntity<?> getModels(@PathVariable("id") Long brandId){
 		return ResponseEntity.ok(modelService.getByBrandId(brandId).stream().map(m -> ModelEntityMapper.INSTANCE.toDTO(m)));
 	}
 	@PutMapping("{id}")
-	public ResponseEntity<?> update(@PathVariable("id") Integer brandId , @RequestBody Brand brandDTO){
+	public ResponseEntity<?> update(@PathVariable("id") Long brandId , @RequestBody Brand brandDTO){
 		
 		Brand brand = brandService.update(brandId,brandDTO);
 		return ResponseEntity.ok(brand);

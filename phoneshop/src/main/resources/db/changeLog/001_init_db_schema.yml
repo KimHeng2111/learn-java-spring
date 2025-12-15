@@ -1,7 +1,7 @@
 databaseChangeLog:
   - changeSet:
       id: 1
-      author: LengKimHeng
+      author: heng
       changes:
         - createTable:
             tableName: tbl_brand
@@ -21,7 +21,7 @@ databaseChangeLog:
 
   - changeSet:
       id: 2
-      author: LengKimHeng
+      author: heng
       changes:
         - createTable:
             tableName: tbl_model

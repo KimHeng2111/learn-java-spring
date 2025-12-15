@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class ModelDTO {
-	private Integer brandId;
+	private Long brandId;
 	private String name;
 }

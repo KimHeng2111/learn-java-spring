@@ -1,0 +1,200 @@
+databaseChangeLog:
+- changeSet:
+    id: 1765532986102-1
+    author: lengk (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: tbl_color_pkey
+            name: color_id
+            type: INTEGER
+        - column:
+            name: color_name
+            type: VARCHAR(255)
+        tableName: tbl_color
+- changeSet:
+    id: 1765532986102-2
+    author: lengk (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: tbl_product_pkey
+            name: product_id
+            type: BIGINT
+        - column:
+            name: avilable_unit
+            type: INTEGER
+        - column:
+            name: image_path
+            type: VARCHAR(255)
+        - column:
+            name: product_name
+            type: VARCHAR(255)
+        - column:
+            name: sale_price
+            type: numeric(38, 2)
+        - column:
+            name: color_id
+            type: INTEGER
+        - column:
+            name: model_id
+            type: BIGINT
+        tableName: tbl_product
+- changeSet:
+    id: 1765532986102-3
+    author: lengk (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: tbl_product_import_histories_pkey
+            name: id
+            type: BIGINT
+        - column:
+            name: date_import
+            type: TIMESTAMP WITHOUT TIME ZONE
+        - column:
+            name: import_unit
+            type: INTEGER
+        - column:
+            name: price_per_unit
+            type: numeric(38, 2)
+        - column:
+            name: product_id
+            type: BIGINT
+        tableName: tbl_product_import_histories
+- changeSet:
+    id: 1765532986102-4
+    author: lengk (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: tbl_sale_pkey
+            name: sale_id
+            type: BIGINT
+        - column:
+            name: date_sold
+            type: TIMESTAMP WITHOUT TIME ZONE
+        tableName: tbl_sale
+- changeSet:
+    id: 1765532986102-5
+    author: lengk (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            autoIncrement: true
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: tbl_sale_detail_pkey
+            name: sale_detail_id
+            type: BIGINT
+        - column:
+            name: amount
+            type: numeric(38, 2)
+        - column:
+            name: unit
+            type: INTEGER
+        - column:
+            name: product_id
+            type: BIGINT
+        - column:
+            name: sale_id
+            type: BIGINT
+        tableName: tbl_sale_detail
+- changeSet:
+    id: 1765532986102-6
+    author: lengk (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: color_id
+        baseTableName: tbl_product
+        constraintName: fk3ndqn9avvrdxr16x270yoitqn
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: color_id
+        referencedTableName: tbl_color
+        validate: true
+- changeSet:
+    id: 1765532986102-8
+    author: lengk (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: product_id
+        baseTableName: tbl_sale_detail
+        constraintName: fkg1s77qhfgo97vuo52ysdsxd0d
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: product_id
+        referencedTableName: tbl_product
+        validate: true
+- changeSet:
+    id: 1765532986102-9
+    author: lengk (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: product_id
+        baseTableName: tbl_product_import_histories
+        constraintName: fkg9l6uq9nu7lj2x97tu2jgeqmt
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: product_id
+        referencedTableName: tbl_product
+        validate: true
+- changeSet:
+    id: 1765532986102-10
+    author: lengk (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: model_id
+        baseTableName: tbl_product
+        constraintName: fkhuvd6uajww1n074jusclnpi6u
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: model_id
+        referencedTableName: tbl_model
+        validate: true
+- changeSet:
+    id: 1765532986102-11
+    author: lengk (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: sale_id
+        baseTableName: tbl_sale_detail
+        constraintName: fko72yagsoepegs431j2fe2tlxl
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: sale_id
+        referencedTableName: tbl_sale
+        validate: true
+

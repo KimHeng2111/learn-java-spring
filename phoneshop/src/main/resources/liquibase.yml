@@ -1,5 +1,0 @@
-url: jdbc:postgresql://localhost:5432/db_phoneshope
-username: phoneshope
-password: phoneshope123
-driver: org.postgresql.Driver
-changeLogFile: src/main/resources/db/changeLog/changelog.yml
