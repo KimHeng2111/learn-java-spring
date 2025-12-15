@@ -10,26 +10,6 @@ databaseChangeLog:
             constraints:
               nullable: false
               primaryKey: true
-              primaryKeyName: tbl_brand_pkey
-            name: brand_id
-            type: BIGINT
-        - column:
-            constraints:
-              nullable: false
-            name: brand_name
-            type: VARCHAR(255)
-        tableName: tbl_brand
-- changeSet:
-    id: 1765532986102-2
-    author: lengk (generated)
-    changes:
-    - createTable:
-        columns:
-        - column:
-            autoIncrement: true
-            constraints:
-              nullable: false
-              primaryKey: true
               primaryKeyName: tbl_color_pkey
             name: color_id
             type: INTEGER
@@ -38,32 +18,7 @@ databaseChangeLog:
             type: VARCHAR(255)
         tableName: tbl_color
 - changeSet:
-    id: 1765532986102-3
-    author: lengk (generated)
-    changes:
-    - createTable:
-        columns:
-        - column:
-            autoIncrement: true
-            constraints:
-              nullable: false
-              primaryKey: true
-              primaryKeyName: tbl_model_pkey
-            name: model_id
-            type: BIGINT
-        - column:
-            constraints:
-              nullable: false
-            name: model_name
-            type: VARCHAR(255)
-        - column:
-            constraints:
-              nullable: false
-            name: brand_id
-            type: BIGINT
-        tableName: tbl_model
-- changeSet:
-    id: 1765532986102-4
+    id: 1765532986102-2
     author: lengk (generated)
     changes:
     - createTable:
@@ -96,7 +51,7 @@ databaseChangeLog:
             type: BIGINT
         tableName: tbl_product
 - changeSet:
-    id: 1765532986102-5
+    id: 1765532986102-3
     author: lengk (generated)
     changes:
     - createTable:
@@ -123,7 +78,7 @@ databaseChangeLog:
             type: BIGINT
         tableName: tbl_product_import_histories
 - changeSet:
-    id: 1765532986102-6
+    id: 1765532986102-4
     author: lengk (generated)
     changes:
     - createTable:
@@ -141,7 +96,7 @@ databaseChangeLog:
             type: TIMESTAMP WITHOUT TIME ZONE
         tableName: tbl_sale
 - changeSet:
-    id: 1765532986102-7
+    id: 1765532986102-5
     author: lengk (generated)
     changes:
     - createTable:
@@ -168,7 +123,7 @@ databaseChangeLog:
             type: BIGINT
         tableName: tbl_sale_detail
 - changeSet:
-    id: 1765532986102-8
+    id: 1765532986102-6
     author: lengk (generated)
     changes:
     - addForeignKeyConstraint:
@@ -183,22 +138,7 @@ databaseChangeLog:
         referencedTableName: tbl_color
         validate: true
 - changeSet:
-    id: 1765532986102-9
-    author: lengk (generated)
-    changes:
-    - addForeignKeyConstraint:
-        baseColumnNames: brand_id
-        baseTableName: tbl_model
-        constraintName: fk_model_brand
-        deferrable: false
-        initiallyDeferred: false
-        onDelete: NO ACTION
-        onUpdate: NO ACTION
-        referencedColumnNames: brand_id
-        referencedTableName: tbl_brand
-        validate: true
-- changeSet:
-    id: 1765532986102-10
+    id: 1765532986102-8
     author: lengk (generated)
     changes:
     - addForeignKeyConstraint:
@@ -213,7 +153,7 @@ databaseChangeLog:
         referencedTableName: tbl_product
         validate: true
 - changeSet:
-    id: 1765532986102-11
+    id: 1765532986102-9
     author: lengk (generated)
     changes:
     - addForeignKeyConstraint:
@@ -228,7 +168,7 @@ databaseChangeLog:
         referencedTableName: tbl_product
         validate: true
 - changeSet:
-    id: 1765532986102-12
+    id: 1765532986102-10
     author: lengk (generated)
     changes:
     - addForeignKeyConstraint:
@@ -243,7 +183,7 @@ databaseChangeLog:
         referencedTableName: tbl_model
         validate: true
 - changeSet:
-    id: 1765532986102-13
+    id: 1765532986102-11
     author: lengk (generated)
     changes:
     - addForeignKeyConstraint:

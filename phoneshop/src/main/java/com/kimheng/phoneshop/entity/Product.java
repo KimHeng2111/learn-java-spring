@@ -10,17 +10,18 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "tbl_product")
+@Table(name = "tbl_product", uniqueConstraints = @UniqueConstraint(columnNames = {"model_id","color_id"}))
 public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "product_id")
 	private long id;
-	@Column(name = "product_name")
+	@Column(name = "product_name", unique = true)
 	private String name;
 	@Column(name = "image_path")
 	private String imagePath;

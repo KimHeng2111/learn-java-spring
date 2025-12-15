@@ -23,5 +23,10 @@ public class ModelServiceImpl implements ModelService{
 		
 		return modelRepository.findByBrandId(brandId);
 	}
+	@Override
+	public Model getById(Long id) {
+		// TODO Auto-generated method stub
+		return modelRepository.findById(id).get();
+	}
 
 }
