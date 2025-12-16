@@ -5,8 +5,9 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
 import com.kimheng.phoneshop.entity.Product;
+import com.kimheng.phoneshop.entity.ProductImportHistory;
 
 @Repository
-public interface ProductRepository extends JpaRepository<Product, Long>, JpaSpecificationExecutor<Product>{
+public interface ProductImportRepository extends JpaRepository<ProductImportHistory, Long>{
 
 }
