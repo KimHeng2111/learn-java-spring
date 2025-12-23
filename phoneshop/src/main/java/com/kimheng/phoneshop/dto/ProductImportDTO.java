@@ -6,9 +6,11 @@ import java.time.LocalDateTime;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
 public class ProductImportDTO {
 	@NotNull(message= "prodcut Id Not Null")
 	@Min(value = 1 , message = "Product ID  not less than 1")
