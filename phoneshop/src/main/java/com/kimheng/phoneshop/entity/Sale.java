@@ -20,5 +20,6 @@ public class Sale {
 	private long id;
 	@Column(name = "date_sold")
 	private LocalDateTime dateSold;
-	
+	@Column(columnDefinition = "BOOLEAN DEFAULT TRUE")
+	private Boolean status;
 }
