@@ -18,8 +18,8 @@ public class Sale {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "sale_id")
 	private long id;
-	@Column(name = "date_sold")
+	@Column(name = "date_sold", updatable = false)
 	private LocalDateTime dateSold;
 	@Column(columnDefinition = "BOOLEAN DEFAULT TRUE")
-	private Boolean status;
+	private Boolean status = true;
 }

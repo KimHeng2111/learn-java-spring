@@ -8,6 +8,6 @@ import com.kimheng.phoneshop.entity.Product;
 import com.kimheng.phoneshop.entity.ProductImportHistory;
 
 @Repository
-public interface ProductImportRepository extends JpaRepository<ProductImportHistory, Long>{
+public interface ProductImportRepository extends JpaRepository<ProductImportHistory, Long> , JpaSpecificationExecutor<ProductImportHistory>{
 
 }

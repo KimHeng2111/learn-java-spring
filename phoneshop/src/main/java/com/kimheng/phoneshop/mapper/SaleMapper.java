@@ -26,5 +26,5 @@ public interface SaleMapper {
     static BigDecimal toBigDecimal(Integer unit) {
         return unit == null ? BigDecimal.ZERO : BigDecimal.valueOf(unit);
     }
-
+//expression = "java(SaleMapper.toBigDecimal(dto.getUnit()).multiply(saleDetail.getProduct().getSalePrice()))"
 }

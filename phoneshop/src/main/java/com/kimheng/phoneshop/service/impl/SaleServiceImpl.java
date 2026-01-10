@@ -1,7 +1,6 @@
 package com.kimheng.phoneshop.service.impl;
 
 import java.util.List;
-import java.util.stream.Stream;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -26,7 +25,7 @@ public class SaleServiceImpl implements SaleService{
 
 	private final SaleRepository saleRepository;
 	private final SaleDetailRepository  saleDetailRepository;
-	private final ProductService productService;
+	//private final ProductService productService;
 	private final SaleMapper saleMapper;
 	private final ProductRepository productRepository;
 	@Override
@@ -35,18 +34,25 @@ public class SaleServiceImpl implements SaleService{
 		
 		Sale saleProduct = saleRepository.save(saleMapper.toSale(dto));
 		List<SaleDetail> list = dto.getSolProducts().stream().map(ps -> saleMapper.toSaleDetail(ps, saleProduct)).toList();
-		  dto.getSolProducts().stream().forEach(ps -> { 
-			  SaleDetail saleDetail =  saleMapper.toSaleDetail(ps, saleProduct);
-			  Product product = productService.getById(ps.getProductId());
-			  Integer avilableUnit = product.getAvilableUnit();
-			  if (avilableUnit < ps.getUnit()) {
+//		  dto.getSolProducts().stream().forEach(ps -> { 
+//			  SaleDetail saleDetail =  saleMapper.toSaleDetail(ps, saleProduct);
+//			  Product product = productService.getById(ps.getProductId());
+//			  Integer avilableUnit = product.getAvilableUnit();
+//			  if (avilableUnit < ps.getUnit()) {
+//				  throw new ApiException(HttpStatus.BAD_REQUEST , "%s is less than your orders !!!".formatted(product.getName()));
+//			  }
+//			  product.setAvilableUnit(avilableUnit - ps.getUnit());
+//			  saleDetailRepository.save(saleDetail); 
+//		});
+		list.stream().forEach(sd -> {
+			Product product = sd.getProduct();
+			Integer avilableUnit = product.getAvilableUnit();
+			  if (avilableUnit < sd.getUnit()) {
 				  throw new ApiException(HttpStatus.BAD_REQUEST , "%s is less than your orders !!!".formatted(product.getName()));
 			  }
-			  product.setAvilableUnit(avilableUnit - ps.getUnit());
-			  saleDetailRepository.save(saleDetail); 
-			  
-		});
-		 
+			  product.setAvilableUnit(avilableUnit - sd.getUnit());
+			  saleDetailRepository.save(sd);
+		}); 
 		return list;
 	}
 	@Override
