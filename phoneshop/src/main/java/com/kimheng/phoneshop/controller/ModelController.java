@@ -1,6 +1,7 @@
 package com.kimheng.phoneshop.controller;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,7 @@ public class ModelController {
 	private final ModelService modelService;
 	private final ModelEntityMapper modelMapper;
 	
+	@PreAuthorize("hasAuthority('MODEL_WRITE')")
 	@PostMapping
 	public ResponseEntity<?> createBrand(@RequestBody ModelDTO modelDTO){
 		return ResponseEntity.ok(modelService.create(modelMapper.toModel(modelDTO)));
