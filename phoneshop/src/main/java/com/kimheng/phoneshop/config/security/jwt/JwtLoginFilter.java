@@ -53,7 +53,6 @@ public class JwtLoginFilter extends UsernamePasswordAuthenticationFilter {
 		response.setHeader("Authorization", "Bearer " + token);
 		response.setContentType("application/json");
 		response.getWriter().write("{\"token\": \"" + token + "\"}");
-
 	}
 
 }

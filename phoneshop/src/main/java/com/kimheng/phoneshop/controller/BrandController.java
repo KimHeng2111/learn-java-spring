@@ -3,6 +3,9 @@ package com.kimheng.phoneshop.controller;
 import java.util.Map;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,10 +29,9 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("brands")
 @CrossOrigin(origins = "http://localhost:4200")
+
 @RequiredArgsConstructor
 public class BrandController {
-	
-	
 	private final BrandService brandService;
 	private final ModelService modelService;
 	@RequestMapping(method = RequestMethod.POST)
@@ -38,7 +40,6 @@ public class BrandController {
 		brand = brandService.Create(brand);
 		return ResponseEntity.ok(brand);
 	}
-	
 	@GetMapping("{id}")
 	public ResponseEntity<?> getBrandById(@PathVariable("id") Long brandId){
 		Brand brand = brandService.getById(brandId);
@@ -58,11 +59,12 @@ public class BrandController {
 	}
 	@GetMapping("{id}/models")
 	public ResponseEntity<?> getModels(@PathVariable("id") Long brandId){
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    System.out.println("Debugging User: %s | Authorities: %s".formatted( auth.getName(), auth.getAuthorities()));
 		return ResponseEntity.ok(modelService.getByBrandId(brandId).stream().map(m -> ModelEntityMapper.INSTANCE.toDTO(m)));
 	}
 	@PutMapping("{id}")
 	public ResponseEntity<?> update(@PathVariable("id") Long brandId , @RequestBody Brand brandDTO){
-		
 		Brand brand = brandService.update(brandId,brandDTO);
 		return ResponseEntity.ok(brand);
 	}

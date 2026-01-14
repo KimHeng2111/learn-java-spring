@@ -7,9 +7,10 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import com.kimheng.phoneshop.entity.Model;
 
 public interface ModelService {
-	@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasAuthority('MODEL_WRITE')")
 	Model create(Model model);
-	@PreAuthorize("hasRole('SALE')")
+	@PreAuthorize("hasAuthority('MODEL_READ')")
 	List<Model> getByBrandId(Long brandId);
+	@PreAuthorize("hasAuthority('MODEL_READ')")
 	Model getById(Long id);
 }

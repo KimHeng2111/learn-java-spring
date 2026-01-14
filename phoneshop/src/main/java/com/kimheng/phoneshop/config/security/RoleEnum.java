@@ -17,10 +17,9 @@ public enum RoleEnum {
 	private Set<PermissionEnum> permissionEnums;
 	public Set<SimpleGrantedAuthority> getGrantedAuthorities(){
 		Set<SimpleGrantedAuthority> grantedAuthorities = this.permissionEnums.stream()
-				.map(per -> new SimpleGrantedAuthority(per.getDescription()))
+				.map(per -> new SimpleGrantedAuthority(per.name()))
 				.collect(Collectors.toSet());
 		grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_" + this.name()));
-		System.out.println(grantedAuthorities);
 		return grantedAuthorities;
 	}
 }
